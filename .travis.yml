@@ -1,30 +1,9 @@
 language: php
-dist: xenial
+
 php:
-  - 7.2
+  - 5.4
+  - 5.5
 
-services:
-  - docker
-  - mysql
+before_script: composer install -n
 
-before_install:
-  - npm install -g bower
-  - composer self-update
-  - mysql -e 'CREATE DATABASE concerto_test;'
-
-install:
-  - composer install --no-interaction
-  - cd $TRAVIS_BUILD_DIR/src/Concerto/PanelBundle/Resources/public/angularjs && bower install --allow-root
-  - cd $TRAVIS_BUILD_DIR/src/Concerto/TestBundle/Resources/public/angularjs && bower install --allow-root
-  - cd $TRAVIS_BUILD_DIR
-  - docker build -t cywongnorman/n-eight:$TRAVIS_BRANCH .
-  - docker tag cywongnorman/n-eight:$TRAVIS_BRANCH cywongnorman/n-eight:test
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then docker tag cywongnorman/n-eight:$TRAVIS_BRANCH cywongnorman/n-eight:latest; fi
-
-script: docker-compose -f travis/docker-compose.yml up --build --exit-code-from concerto
-
-deploy:
-  provider: script
-  script: bash ./travis/docker_deploy.sh
-  on:
-    all_branches: true
+script: phpunit -c app
