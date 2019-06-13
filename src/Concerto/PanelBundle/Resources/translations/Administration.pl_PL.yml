@@ -1,0 +1,164 @@
+breadcrumb: Administracja
+form:
+    title: Ustawienia
+    settings:
+        session_limit: Limit sesji
+        session_limit.tooltip: Maksymalna dostępna liczba równoczesnych sesji testów.
+        api_enabled: API włączone
+        api_enabled.tooltip: Włącz API
+        
+messages:
+    fieldset:
+        legend: Wiadomości
+        legend.tooltip: Wiadomości
+    list:
+        fields: 
+            time: Czas
+            category: Kategoria
+            category.system: Systemowe
+            category.test: Testu
+            category.global: Globalne
+            category.local: Localne
+            category.changelog: Changelog
+            subject: Temat
+            message: Wiadomość
+        buttons:
+            refresh: Odśwież
+            delete_selected: Usuń wybrane
+            clear: Wyczyść wszystkie
+            delete: Usuń
+    dialogs:
+        title:
+            delete: Usuwanie wiadomości
+            clear: Usuwanie wszystkich wiadomości
+        message:
+            delete: Jesteś pewien, że chcesz usunąć wybrane wiadomości?
+            clear: Jesteś pewien, że chcesz usunąć wszystkie wiadomości?
+        
+usage_charts:
+    fieldset:
+        legend: Wykresy użycia
+        legend.tooltip: Wykresy użycia
+    buttons: 
+        refresh: Odśwież
+        clear: Wyczyść dane
+    dialog:
+        title:
+            clear: Usuwanie danych użycia
+        confirm:
+            clear: Jesteś pewien, że chcesz usunąć wszystkie dane użycia?
+    filter:
+        today: Dzisiaj
+        specific_date: Wybrana data
+        date_range: Zakres dat
+        
+packages:
+    fieldset:
+        legend: Pakiety R
+        legend.tooltip: Pakiety R
+    list:
+        buttons:
+            refresh: Odśwież
+            report: Raport pakietów
+            install: Instalacja
+    dialog:
+        title: 
+            report: Raport pakietów R
+            report_tooltip: Raport pakietów R
+            installation: Instalacja pakietu R
+            installation.tooltip: Instalacja pakietu R
+            installation_failed: Instalacja pakietu R nie powiodła się
+        content:
+            report_failed: Raport pakietów R nie powiódł się.
+        fields:
+            method: Metoda
+            method.tooltip: Metoda instalacji pakietu R
+            method.latest: Najnowsza wersja
+            method.specific: Konkretna wersja
+            name: Nazwa
+            name.tooltip: Nazwa pakietu R
+            mirror: URL lustra
+            mirror.tooltip: URL serweru lustra pakietu R
+            url: URL pakietu
+            url.tooltip: URL źródła pakietu R
+        buttons:
+            install: Instaluj
+            cancel: Anuluj
+        
+tasks:
+    fieldset:
+        legend: Zaplanowane zadania
+        legend.tooltip: Zaplanowane systemowe zadania
+    current_platform_v: 'Obecna wersja platformy:'
+    available_platform_v: 'Dostępna wersja platformy:'
+    current_content_v: 'Obecna wersja zawartości:'
+    available_content_v: 'Dostępna wersja zawartości:'
+    backup_platform_v: 'Wersja kopii platformy:'
+    backup_content_v: 'Wersja kopii zawartości:'
+    version_none: żadna
+    buttons:
+        upgrade: Aktualizuj
+        backup: Kopia zapasowa
+        restore: Przywróć kopie
+    list:
+        fields:
+            updated: Zaktualizowane
+            type: Typ
+            type.platform_upgrade: Aktualizacja Platformy
+            type.content_upgrade: Aktualizacja Zawartości
+            type.restore_backup: Odtwórz Kopię
+            type.backup: Kopia Zapasowa
+            type.r_package_install: Instalacja Pakietu R
+            status: Status
+            status.pending: W kolejce
+            status.ongoing: Trwa
+            status.completed: Zakończone
+            status.failed: Nieudane
+            status.canceled: Anulowane
+            description: Opis
+            output: Wyjście
+    dialog:
+        title:
+            backup: Kopia zapasowa
+            backup.failed: Kopia zapawowa zakończona niepowodzeniem
+            restore: Przywracanie kopii zapasowej
+            restore.failed: Przewracanie kopii zapasowej zakończone niepowodzeniem
+            content_upgrade: Aktualzacja zawartości
+            content_upgrade.failed: Aktualizacja zawartości zakończona niepowodzeniem
+            platform_upgrade: Aktualizacja platformy
+            platform_upgrade.failed: Aktualizacja platformy zakończona niepowodzeniem
+        confirm: 
+            backup: Jesteś pewien, że chcesz dokonać kopii zapasowej Concerto Platform? Jakalowiek poprzednia kopia zapasowa zostanie bezpowrotnie zastąpiona.
+            restore: Jesteś pewien, że chcesz przywrócić kopię zapasową? Zostanie przywrócony stan platformy z momentu dokonania kopii zapasowej zastępując obecny. Ta operacja jest nieodwracalna.
+            content_upgrade: Jesteś pewien, że chcesz dokonać aktualizacji zawartości?
+            platform_upgrade: Jesteś pewien, że chcesz dokonać aktualizacji platformy?
+        content:
+            busy: Obecnie już trwają lub są zaplanowane zadania.
+        fields:
+            backup: Zrób kopię zapasową i użyj jej jako punktu przywrócenia w wypadku gdy to zadanie się nie powiedzie.
+        
+api_clients:
+    fieldset:
+        legend: klienci API
+        legend.tooltip: klienci API
+    list: 
+        fields: 
+            id: Id
+            secret: Sekret
+        buttons:
+            refresh: Odśwież
+            add: Dodaj nowego
+            delete_selected: Usuń wybrane
+            clear: Wczyść klientów
+            delete: Usuń
+    dialogs:
+        title:
+            delete: Usuwanie klienta API
+            clear: Usuwanie wszystkich klientów API
+        message:
+            delete: Jesteś pewien, że chcesz usunąć wybranych klientów API?
+            clear: Jesteś pewien, że chcesz usunąc wszystkich klientów API?
+
+alerts:
+    no_usage_data: Obecnie brak danych użycia.
+    api_disabled: API jest obecnie wyłączone.

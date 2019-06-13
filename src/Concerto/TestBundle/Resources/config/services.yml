@@ -1,0 +1,70 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Concerto\TestBundle\:
+        resource: '../../{Command,Service}'
+
+        # controllers are imported separately to make sure they're public
+        # and have a tag that allows actions to type-hint services
+    Concerto\TestBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+#repositories
+    Concerto\TestBundle\Repository\TestSessionCountRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Concerto\TestBundle\Entity\TestSessionCount]
+
+#controller
+    Concerto\TestBundle\Controller\TestRunnerController:
+        arguments:
+            $environment: "%kernel.environment%"
+            $testRunnerSettings: "%test_runner_settings%"
+        public: true
+
+#services
+    Concerto\TestBundle\Service\TestRunnerService:
+        arguments:
+            $environment: "%kernel.environment%"
+
+    Concerto\TestBundle\Service\PersistantSessionRunnerService:
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $root: "%kernel.root_dir%"
+            $environment: "%kernel.environment%"
+
+    Concerto\TestBundle\Service\CheckpointSessionRunnerService:
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $root: "%kernel.root_dir%"
+
+    Concerto\TestBundle\Service\SerializedSessionRunnerService:
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $root: "%kernel.root_dir%"
+            $environment: "%kernel.environment%"
+
+    Concerto\TestBundle\Service\TestSessionCountService:
+        arguments:
+            $administration: "%administration%"
+
+#commands
+    Concerto\TestBundle\Command\StartForkerCommand:
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+
+#event subscribers
+    Concerto\PanelBundle\EventSubscriber\LocaleSubscriber:
+        arguments:
+            $defaultLocale: "%kernel.default_locale%"
+        tags:
+            - { name: kernel.event_subscriber }

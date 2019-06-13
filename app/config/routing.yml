@@ -1,0 +1,21 @@
+concerto_api:
+    resource: "@ConcertoAPIBundle/Resources/config/routing.yml"
+    prefix:   /
+
+concerto_panel:
+    resource: "@ConcertoPanelBundle/Resources/config/routing.yml"
+    prefix:   /
+
+concerto_test:
+    resource: "@ConcertoTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+routing_custom:
+    resource: routing_custom.yml
+
+remove_trailing_slash:
+    path: /{url}
+    defaults: { _controller: ConcertoPanelBundle:Redirect:removeTrailingSlash }
+    requirements:
+        url: .*/$
+    methods: [GET]

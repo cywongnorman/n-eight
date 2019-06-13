@@ -1,0 +1,28 @@
+language: php
+
+php:
+  - "7.1"
+
+build:
+  ci:
+    - npm install -g bower
+    - composer self-update
+    - cd $SHIPPABLE_BUILD_DIR
+    - composer install --no-interaction
+    - cd $SHIPPABLE_BUILD_DIR/src/Concerto/PanelBundle/Resources/public/angularjs
+    - bower install --allow-root
+    - cd $SHIPPABLE_BUILD_DIR/src/Concerto/TestBundle/Resources/public/angularjs
+    - bower install --allow-root
+  post_ci:
+    - cd $SHIPPABLE_BUILD_DIR
+    - docker build -t cywongnorman/n-eight:$BRANCH .
+    - if [ "$IS_GIT_TAG" = "true" ]; then docker tag cywongnorman/n-eight:$BRANCH cywongnorman/n-eight:$GIT_TAG_NAME; fi
+    - if [ "$BRANCH" = "master" ]; then docker tag cywongnorman/n-eight:$BRANCH cywongnorman/n-eight:latest; fi
+    - docker push cywongnorman/n-eight:$BRANCH
+    - if [ "$IS_GIT_TAG" = "true" ]; then docker push cywongnorman/n-eight:$GIT_TAG_NAME; fi
+    - if [ "$BRANCH" = "master" ]; then docker push cywongnorman/n-eight:latest; fi
+
+integrations:
+  hub:
+    - integrationName: DockerHub
+      type: docker

@@ -1,0 +1,26 @@
+breadcrumb:
+    manager: Menadżer plików
+
+uploader:
+    alerts:
+        upload_failed:
+            title: Wysyłanie pliku
+            message: Wysyłanie pliku się nie powiodło!
+    library:
+        title: Biblioteka plików
+        empty: Biblioteka plików jest obecnie pusta.
+        buttons:
+            use: Użyj
+            remove: Usuń
+            open: Otwórz
+    queue:
+        title: Kolejka wysyłki
+        droparea: Przeciągnij i upuść tutaj swoje pliki
+        progress: Całkowity postęp
+        buttons:
+            upload: Wyślij
+            cancel: Anuluj
+            remove: Usuń
+            uploadall: Wyślij wszystkie
+            cancelall: Anuluj wszystkie
+            removeall: Usuń wszystkie
